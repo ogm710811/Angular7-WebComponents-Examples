@@ -1,21 +1,114 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<!-- <bt-dialog-target></bt-dialog-target> -->
+<div class="container-fluid p-0">
+  <div class="row no-gutters">
+    <div
+      class="col blue lighten-5 py-4 text-center font-weight-bold text-primary"
+    >
+      {{ title | uppercase }}
+    </div>
+  </div>
+  <div class="row no-gutters p-0">
+    <div class="col column__menu--width column__menu--height blue lighten-5">
+      <links>
+        <ul class="pl-0 list-unstyled">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/" routerLinkActive="active">
+              <span class="text-capitalize">Home</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/dragdrop"
+              routerLinkActive="active"
+            >
+              <span class="text-capitalize">Drag & Drop</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/toolmenu" routerLinkActive="active">
+              <span class="text-capitalize">Tooltip Menu</span>
+            </a>
+          </li>
+          <!--
+            <li class="nav-item">
+            	<a class="nav-link" routerLink="/select2" routerLinkActive="active">
+            		<span class="text-capitalize">Select2</span>
+            	</a>
+            </li>
+            <li class="nav-item">
+            	<a class="nav-link" routerLink="/Publishers" routerLinkActive="active">
+            		<span class="text-capitalize">Test Resolver</span>
+            	</a>
+            </li>
+            <li class="nav-item">
+            	<a class="nav-link" routerLink="/Logging" routerLinkActive="active">
+            		<span class="text-capitalize">Logging</span>
+            	</a>
+            </li>
+            <li class="nav-item">
+            	<a class="nav-link" routerLink="/Noty" routerLinkActive="active">
+            		<span class="text-capitalize">Noty</span>
+            	</a>
+            </li>
+            <li class="nav-item">
+            	<a class="nav-link" routerLink="/Prompt" routerLinkActive="active">
+            		<span class="text-capitalize">Prompt</span>
+            	</a>
+            </li>
+            <li class="nav-item">
+            	<a class="nav-link" routerLink="/Excel" routerLinkActive="active">
+            		<span class="text-capitalize">Excel</span>
+            	</a>
+            </li>
+            <li class="nav-item">
+            	<a class="nav-link" routerLink="/TemplateForm" routerLinkActive="active">
+            		<span class="text-capitalize">Template Form</span>
+            	</a>
+            </li>
+            <li class="nav-item">
+            	<a class="nav-link" routerLink="/ReactiveForm" routerLinkActive="active">
+            		<span class="text-capitalize">Reactive Form</span>
+            	</a>
+            </li>
+            <li class="nav-item">
+            	<a class="nav-link" routerLink="/FlowUpload" routerLinkActive="active">
+            		<span class="text-capitalize">Flow Upload</span>
+            	</a>
+            </li>
+            <li class="nav-item">
+            	<a class="nav-link" routerLink="/SelectDialog" routerLinkActive="active">
+            		<span class="text-capitalize">Select Dialog</span>
+            	</a>
+            </li>
+            <li class="nav-item">
+            	<a class="nav-link" routerLink="/GridEditor" routerLinkActive="active">
+            		<span class="text-capitalize">Grid Editor</span>
+            	</a>
+            </li>
+            <li class="nav-item">
+            	<a class="nav-link" routerLink="/codeEditor" routerLinkActive="active">
+            		<span class="text-capitalize">Code Editor</span>
+            	</a>
+            </li>
+            <li class="nav-item">
+            	<a class="nav-link" routerLink="/GridEnterpriseModel" routerLinkActive="active">
+            		<span class="text-capitalize">Grid Enterprise Row Model</span>
+            	</a>
+            </li>
+          -->
+        </ul>
+      </links>
+    </div>
+    <div class="col">
+      <div class="row no-gutters">
+        <div class="col column__menu--height">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row no-gutters">
+    <div class="col"><app-footer></app-footer></div>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
-<router-outlet></router-outlet>

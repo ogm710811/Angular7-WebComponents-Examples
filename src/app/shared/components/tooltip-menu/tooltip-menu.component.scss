@@ -1,0 +1,21 @@
+$custom-skins: ("default": ("skin-secondary-color-dark": setcolor(blue, x-dark)));
+
+.over:hover {
+	background-color: #007bff;
+}
+
+.tooltip-text--width {
+	width: 77px;
+}
+
+.cursor-pointer {
+	cursor: pointer !important;
+}
+
+@each $skin, $data in $custom-skins {
+	.#{$skin}-skin {
+		.secondary-color {
+			background-color: map-get($data, skin-secondary-color) !important;
+		}
+	}
+}

@@ -1,7 +1,4 @@
 {
-  "name": "$name$",
-  "version": "$version$",
-  "dependencies": {
-    $END$
-  }
+	"name": "@app/shared",
+	"version": "1.0.0"
 }
