@@ -1,4 +1,4 @@
-import { TooltipTemplates } from '../enums/tooltip-menu-templates';
+import { TooltipTemplates } from '../enums/tooltip-menu-templates.enums';
 import { TooltipMenuOptions } from './tooltip-menu-option';
 import { TooltipMenuSettingsBase } from './tooltip-menu-settings-base';
 

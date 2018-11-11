@@ -10,7 +10,7 @@
     "curly": false,
     "eofline": true,
     "forin": true,
-    "import-blacklist": [true, "lodash", "lodash-es", "rxjs"],
+    "import-blacklist": [false, "lodash", "lodash-es", "rxjs"],
     "import-spacing": true,
     "indent": [true, "tabs"],
     "interface-over-type-literal": true,

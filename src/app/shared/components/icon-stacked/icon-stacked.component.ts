@@ -17,7 +17,5 @@ export class IconStackedComponent implements OnInit {
 	}
 	constructor() {}
 
-	public ngOnInit() {
-		console.log(this._cssClasses);
-	}
+	public ngOnInit() {}
 }

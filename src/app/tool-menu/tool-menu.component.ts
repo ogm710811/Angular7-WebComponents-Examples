@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TooltipTemplates } from '../shared/enums/tooltip-menu-templates';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TooltipMenuSettings } from '../shared/models/tooltip-menu-settings';
+import { TooltipTemplates } from './../shared/enums/tooltip-menu-templates.enums';
 
 @Component({
 	selector: 'app-tool-menu',
@@ -25,7 +26,6 @@ export class ToolMenuComponent implements OnInit {
 				templateType: TooltipTemplates.Action,
 				iconAction: 'fa-plus-circle',
 				placement: 'bottom',
-				title: 'create new',
 				dynamicOptions: () => {
 					const options = [
 						{
@@ -52,6 +52,61 @@ export class ToolMenuComponent implements OnInit {
 					return options;
 				}
 			}
+		],
+		[
+			'help',
+			{
+				templateType: TooltipTemplates.Content,
+				placement: 'bottom',
+				text: 'Help Documents',
+				widthText: '97'
+			}
+		],
+		[
+			'navigation',
+			{
+				templateType: TooltipTemplates.Nav,
+				iconNav: 'fa-map-marker',
+				placement: 'bottom',
+				title: 'navigation',
+				widthText: '79',
+				isChecked: check => {
+					const checkUrl = this.router.url;
+					return check === checkUrl.substr(1) ? true : false;
+				},
+				dynamicOptions: () => {
+					return [
+						{
+							icon: 'fa-book',
+							label: 'home',
+							action: () => {
+								this.router.navigate([ '/home' ]);
+							}
+						},
+						{
+							icon: 'fa-tags',
+							label: 'drag & drop',
+							action: () => {
+								this.router.navigate([ '/dragdrop' ]);
+							}
+						},
+						{
+							icon: 'fa-bolt',
+							label: 'toolmenu',
+							action: () => {
+								this.router.navigate([ '/toolmenu' ]);
+							}
+						},
+						{
+							icon: 'fa-folder',
+							label: 'date picker',
+							action: () => {
+								this.router.navigate([ '/datepicker' ]);
+							}
+						}
+					];
+				}
+			}
 		]
 	]);
 
@@ -63,7 +118,15 @@ export class ToolMenuComponent implements OnInit {
 		return this._tooltipMenu.get('action');
 	}
 
-	constructor() {}
+	public get helpTooltipMenu(): TooltipMenuSettings {
+		return this._tooltipMenu.get('help');
+	}
+
+	public get navigationTooltipMenuSettings(): TooltipMenuSettings {
+		return this._tooltipMenu.get('navigation');
+	}
+
+	constructor(private readonly router: Router, private readonly route: ActivatedRoute) {}
 
 	public ngOnInit() {}
 }

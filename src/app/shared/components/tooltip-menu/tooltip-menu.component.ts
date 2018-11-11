@@ -1,9 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { TooltipTemplates } from '../../enums/tooltip-menu-templates';
+import { TooltipTemplates } from '../../enums/tooltip-menu-templates.enums';
 import { TooltipMenuBase } from '../../models/tooltip-menu-base';
 import { TooltipMenuSettings } from '../../models/tooltip-menu-settings';
 import { TooltipMenuOptions } from './../../models/tooltip-menu-option';
-import { controlNameBinding } from '@angular/forms/src/directives/reactive_directives/form_control_name';
 
 @Component({
 	selector: 'app-tooltip-menu',
@@ -40,8 +39,14 @@ export class ToolMenuComponent extends TooltipMenuBase implements OnInit {
 	public tooltipTemplates = TooltipTemplates;
 	public options: TooltipMenuOptions[];
 	public tooltipLabels: string[] = [];
+
 	public currentTemplate(template: TooltipTemplates): boolean {
 		return this.toolMenuParams.templateType === template;
+	}
+
+	public navCurrentView(check: string): boolean {
+		const result = typeof this.toolMenuParams.isChecked === 'function' && this.toolMenuParams.isChecked(check);
+		return result;
 	}
 
 	private menuSetup() {
@@ -49,7 +54,6 @@ export class ToolMenuComponent extends TooltipMenuBase implements OnInit {
 			this.options = this.toolMenuParams.dynamicOptions();
 			this.tooltipLabels = [];
 			this.options.forEach(o => {
-				console.log(o);
 				this.tooltipLabels.push(o.label);
 			});
 		}
@@ -61,7 +65,6 @@ export class ToolMenuComponent extends TooltipMenuBase implements OnInit {
 
 	public ngOnInit() {
 		this.menuSetup();
-		console.log(this.toolMenuParams);
 	}
 
 	public onActionButtonClick(e: MouseEvent) {

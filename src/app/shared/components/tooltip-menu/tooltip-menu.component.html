@@ -6,11 +6,21 @@
                   <ng-content></ng-content>
                 </ng-container>
                 <ng-container *ngIf="currentTemplate(tooltipTemplates.Action)">
-                  <a type="button" class="btn-flat p-0 m-0 cursor-pointer">
-                    <span class="fa-stack fa-lg blue-text">
+                  <a class="btn-flat p-0 m-0 cursor-pointer">
+                    <span class="fa-stack fa-lg white-text">
                       <i class="fa fa-lg fa-stack-1x p-0" [ngClass]="toolMenuParams.iconAction"></i>
                     </span>
                   </a>
+                </ng-container>
+                <ng-container *ngIf="currentTemplate(tooltipTemplates.Nav)">
+                    <a class="btn-flat p-0 m-0 cursor-pointer">
+                      <span class="fa-stack fa-lg icon--small-green-text">
+                        <i class="fa fa-lg fa-stack-1x white-text" aria-hidden="true" [ngClass]="toolMenuParams.iconNav"></i>
+                        <ng-container *ngFor="let option of options">
+                          <i *ngIf="navCurrentView(option.label)" class="fa fa-lg fa-stack-1x icon--small icon--bottom-right" [ngClass]="option.icon" aria-hidden="true"></i>
+                        </ng-container>
+                      </span>
+                    </a>
                 </ng-container>
             </div>
         </div>
@@ -31,6 +41,20 @@
                 <a class="small text-uppercase d-block px-2 py-1 over text-nowrap">
                   <app-icon-stacked [cssClasses]="[option.icon, 'white-text']"></app-icon-stacked>
                   <span class="d-inline-block tooltip-text--width">{{option.label}}</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div *ngIf="currentTemplate(tooltipTemplates.Nav)">
+          <div class="mb-2 mt-2">
+            <p class="small text-uppercase mb-2">{{toolMenuParams.title}}</p>
+            <ul class="list-unstyled m-0 text-left white-text">
+              <li *ngFor="let option of options" class="m-0 px-3 py-1 over list-item--no-border" (click)="option.action(option.label); close()" mdbRippleRadius>
+                <a class="small text-uppercase text-nowrap">
+                  <app-icon-stacked [cssClasses]="[option.icon, 'white-text' ]"></app-icon-stacked>
+                  <span class="d-inline-block" [ngStyle]="{'width.px': toolMenuParams.widthText}">{{option.label}}</span>
+                  <app-icon-stacked *ngIf="navCurrentView(option.label)" [cssClasses]="['fa-check', 'icon--small-green-text']"></app-icon-stacked>
                 </a>
               </li>
             </ul>

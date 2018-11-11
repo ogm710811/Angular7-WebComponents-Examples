@@ -1,5 +1,3 @@
-$custom-skins: ("default": ("skin-secondary-color-dark": setcolor(blue, x-dark)));
-
 .over:hover {
 	background-color: #007bff;
 }
@@ -12,10 +10,20 @@ $custom-skins: ("default": ("skin-secondary-color-dark": setcolor(blue, x-dark))
 	cursor: pointer !important;
 }
 
-@each $skin, $data in $custom-skins {
-	.#{$skin}-skin {
-		.secondary-color {
-			background-color: map-get($data, skin-secondary-color) !important;
-		}
-	}
+.list-item--no-border {
+	outline: none;
+}
+
+.icon--small {
+	font-size: 12px;
+}
+
+.icon--bottom-right {
+	top: 12px;
+	left: 13px;
+}
+
+.icon--small-green-text {
+	// color: #a6eeff !important;
+	color: green !important;
 }
