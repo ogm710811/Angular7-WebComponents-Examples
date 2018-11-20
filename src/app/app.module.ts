@@ -3,11 +3,15 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { DialogModule } from './shared-dialogs/dialog.module';
 import { SharedModule } from './shared/shared.module';
 
+import { DialogCenter1Component } from './app-dialogs/dialog-center1/dialog-center1.component';
+import { Dialog1Component } from './app-dialogs/dialog1/dialog1.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
+import { DialogExampleComponent } from './dialog-example/dialog-example.component';
 import { DragDropComponent } from './drag-drop/drag-drop.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
@@ -20,13 +24,17 @@ import { ToolMenuComponent } from './tool-menu/tool-menu.component';
 		HomeComponent,
 		FooterComponent,
 		ToolMenuComponent,
-		DatepickerComponent
+		DatepickerComponent,
+		DialogExampleComponent,
+		Dialog1Component,
+		DialogCenter1Component
 	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
 		MDBBootstrapModule.forRoot(),
 		SharedModule,
+		DialogModule.registerDialogs([ Dialog1Component, DialogCenter1Component ]),
 		BrowserAnimationsModule,
 		DragDropModule
 	],
