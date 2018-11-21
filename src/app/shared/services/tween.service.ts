@@ -1,6 +1,6 @@
 import { ElementRef, Injectable } from '@angular/core';
-import { Expo, TweenMax } from 'gsap/all';
 import { TweenConfig } from 'gsap';
+import { Expo, TweenMax } from 'gsap/all';
 
 @Injectable({
 	providedIn: 'root'

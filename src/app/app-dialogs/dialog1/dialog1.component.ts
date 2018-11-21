@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Dialog } from 'src/app/shared-dialogs/models/dialog';
 import { DialogService } from 'src/app/shared-dialogs/services/dialog.service';
 import { Dialog1Model } from './../../models/dialog1Model';
+import { CustomButtonColors } from './../../shared/enums/custom-button-colors.enum';
+import { CustomButtonSettings } from './../../shared/models/custom-button-settings';
 
 @Component({
 	selector: 'app-dialog1',
@@ -9,6 +11,21 @@ import { Dialog1Model } from './../../models/dialog1Model';
 	styleUrls: [ './dialog1.component.scss' ]
 })
 export class Dialog1Component extends Dialog<Dialog1Model> implements OnInit {
+	private _buttonSettings = [
+		{
+			iconClasses: [ 'fa-save' ],
+			text: 'SAVE',
+			color: CustomButtonColors.primary,
+			type: 'submit',
+			action: () => {
+				this.save();
+			}
+		}
+	];
+	public get buttonSettings(): CustomButtonSettings[] {
+		return this._buttonSettings;
+	}
+
 	constructor(
 		dialogService: DialogService
 		// private readonly log: LoggingService,

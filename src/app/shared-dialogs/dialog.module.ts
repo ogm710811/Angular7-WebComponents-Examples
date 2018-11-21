@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ANALYZE_FOR_ENTRY_COMPONENTS, ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { SharedModule } from '../shared/shared.module';
 import { DialogBodyComponent } from './components/dialog-body/dialog-body.component';
 import { DialogCenterComponent } from './components/dialog-center/dialog-center.component';
 import { DialogFooterComponent } from './components/dialog-footer/dialog-footer.component';
@@ -11,7 +12,7 @@ import { DialogTargetComponent } from './components/dialog-target/dialog-target.
 import { DialogService, REGISTERED_DIALOGS } from './services/dialog.service';
 
 @NgModule({
-	imports: [ CommonModule, FormsModule, MDBBootstrapModule.forRoot() ],
+	imports: [ CommonModule, FormsModule, MDBBootstrapModule.forRoot(), SharedModule ],
 	exports: [
 		DialogBodyComponent,
 		DialogCenterComponent,

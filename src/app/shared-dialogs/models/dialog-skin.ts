@@ -1,11 +1,12 @@
 import { ComponentRef, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ModalBackdropComponent, ModalDirective } from 'angular-bootstrap-md';
-import { TweenMax, TweenConfig } from 'gsap';
+import { TweenConfig, TweenMax } from 'gsap';
 import { race, ReplaySubject, Subject } from 'rxjs';
 import { first, takeUntil } from 'rxjs/operators';
+import { TweenService } from '../../shared/services/tween.service';
 import { DialogSize } from '../enums/dialog-size.enum';
 import { DialogTransitions } from '../enums/dialog-transitions.enum';
-import { TweenService } from '../../shared/services/tween.service';
+import { CustomButtonSettings } from './../../shared/models/custom-button-settings';
 
 export abstract class DialogSkin implements OnDestroy, OnInit {
 	private static offset = 54;
@@ -114,7 +115,7 @@ export abstract class DialogSkin implements OnDestroy, OnInit {
 		this.contentClasses = value.split(' ');
 	}
 
-	public headerClasses: string[] = [ 'secondary-color', 'white-text' ];
+	public headerClasses: string[] = [ 'primary-color-dark', 'white-text' ];
 
 	@Input()
 	set headerClass(value: string) {
@@ -137,7 +138,7 @@ export abstract class DialogSkin implements OnDestroy, OnInit {
 
 	// @Input() public tooltipSettings?: TooltipMenuSettings;
 
-	// @Input() public headerButtonSettings?: ButtonSettings[];
+	@Input() public headerButtonSettings?: CustomButtonSettings[];
 
 	// @Input() public footerButtonSettings?: ButtonSettings[];
 	//#endregion
