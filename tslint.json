@@ -12,7 +12,7 @@
     "forin": true,
     "import-blacklist": [false, "lodash", "lodash-es", "rxjs"],
     "import-spacing": true,
-    "indent": [true, "tabs"],
+    "indent": [true, "tabs", 4],
     "interface-over-type-literal": true,
     "label-position": true,
     "linebreak-style": [true, "CRLF"],

@@ -1,8 +1,17 @@
-import { ComponentRef, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
+import {
+	ComponentRef,
+	ElementRef,
+	Input,
+	OnDestroy,
+	OnInit,
+	Renderer2,
+	ViewChild
+} from '@angular/core';
 import { ModalBackdropComponent, ModalDirective } from 'angular-bootstrap-md';
 import { TweenConfig, TweenMax } from 'gsap';
 import { race, ReplaySubject, Subject } from 'rxjs';
 import { first, takeUntil } from 'rxjs/operators';
+import { TooltipMenuSettings } from 'src/app/shared/models/tooltip-menu-settings';
 import { TweenService } from '../../shared/services/tween.service';
 import { DialogSize } from '../enums/dialog-size.enum';
 import { DialogTransitions } from '../enums/dialog-transitions.enum';
@@ -115,14 +124,14 @@ export abstract class DialogSkin implements OnDestroy, OnInit {
 		this.contentClasses = value.split(' ');
 	}
 
-	public headerClasses: string[] = [ 'primary-color-dark', 'white-text' ];
+	public headerClasses: string[] = ['primary-color-dark', 'white-text'];
 
 	@Input()
 	set headerClass(value: string) {
 		this.headerClasses = value.split(' ');
 	}
 
-	public footerClasses: string[] = [ 'white-text' ];
+	public footerClasses: string[] = ['white-text'];
 
 	@Input()
 	set footerClass(value: string) {
@@ -136,7 +145,7 @@ export abstract class DialogSkin implements OnDestroy, OnInit {
 		this.iconClasses = value.split(' ');
 	}
 
-	// @Input() public tooltipSettings?: TooltipMenuSettings;
+	@Input() public tooltipSettings?: TooltipMenuSettings;
 
 	@Input() public headerButtonSettings?: CustomButtonSettings[];
 
@@ -166,11 +175,13 @@ export abstract class DialogSkin implements OnDestroy, OnInit {
 
 		if (sizeClass) this.dialogClasses.push(sizeClass);
 
-		this.modalApi.onShown.pipe(takeUntil(race([ this.onLoaded$, this.destroyed$ ]).pipe(first()))).subscribe(() => {
-			this.onTransitionComplete$.pipe(first()).subscribe(() => {
-				this.onLoaded$.next(null);
+		this.modalApi.onShown
+			.pipe(takeUntil(race([this.onLoaded$, this.destroyed$]).pipe(first())))
+			.subscribe(() => {
+				this.onTransitionComplete$.pipe(first()).subscribe(() => {
+					this.onLoaded$.next(null);
+				});
 			});
-		});
 	}
 
 	public ngOnDestroy(): void {
@@ -221,7 +232,8 @@ export abstract class DialogSkin implements OnDestroy, OnInit {
 	}
 
 	public backdropClick($event: MouseEvent): void {
-		if ($event.defaultPrevented || $event.target !== $event.currentTarget) return;
+		if ($event.defaultPrevented || $event.target !== $event.currentTarget)
+			return;
 
 		$event.preventDefault();
 
@@ -236,7 +248,9 @@ export abstract class DialogSkin implements OnDestroy, OnInit {
 		if (!this.disableClose) this.onClose$.next();
 	}
 
-	public position(coveringDialogLeft: number): { newLeft: number; promise: Promise<void> } {
+	public position(
+		coveringDialogLeft: number
+	): { newLeft: number; promise: Promise<void> } {
 		switch (this.transition) {
 			case DialogTransitions.FromRight:
 				return this.positionLeft(coveringDialogLeft);
@@ -315,7 +329,11 @@ export abstract class DialogSkin implements OnDestroy, OnInit {
 	public remove(): Promise<void> {
 		switch (this.transition) {
 			case DialogTransitions.FromRight:
-				return this.positionLeft(window.innerWidth + (this.width - DialogSkin.offset), 1050, true).promise;
+				return this.positionLeft(
+					window.innerWidth + (this.width - DialogSkin.offset),
+					1050,
+					true
+				).promise;
 			case DialogTransitions.FromTop:
 				return this.positionTop(1050, -500, 0, true).promise;
 			case DialogTransitions.None:

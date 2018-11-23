@@ -1,13 +1,23 @@
-<app-dialog-right-lg header="Dialog 1" [headerButtonSettings]="buttonSettings">
-	<app-dialog-body>
-		Dialog 1
-    Level: {{formData.level}}
-    <button (click)="openDialog1()" mdbBtn type="button" color="elegant" mdbWavesEffect>Open Dialog 1</button>
-    <button (click)="openDialog2()" mdbBtn type="button" color="elegant" mdbWavesEffect>Open Dialog 2</button>
-    <button (click)="openDialog3()" mdbBtn type="button" color="elegant" mdbWavesEffect>Open Dialog 3</button>
-    <button (click)="openDisableClose()" mdbBtn type="button" color="elegant" mdbWavesEffect>Open Disable Close</button>
-    <button (click)="openDialogCenter()" mdbBtn type="button" color="elegant" mdbWavesEffect>Open Dialog Center</button>
-    <button (click)="openNoty()" mdbBtn type="button" color="elegant" mdbWavesEffect>Noty</button>
-	</app-dialog-body>
+<app-dialog-right-lg header="Dialog 1" [headerButtonSettings]="buttonSettings" [tooltipSettings]="headerTooltipMenuSettings">
+  <app-dialog-body>
+    Dialog 1 Level: {{ formData.level }}
+    <button (click)="openDialog1()" mdbBtn type="button" color="elegant" mdbWavesEffect>
+      Open Dialog 1
+    </button>
+    <button (click)="openDialog2()" mdbBtn type="button" color="elegant" mdbWavesEffect>
+      Open Dialog 2
+    </button>
+    <button (click)="openDialog3()" mdbBtn type="button" color="elegant" mdbWavesEffect>
+      Open Dialog 3
+    </button>
+    <button (click)="openDisableClose()" mdbBtn type="button" color="elegant" mdbWavesEffect>
+      Open Disable Close
+    </button>
+    <button (click)="openDialogCenter()" mdbBtn type="button" color="elegant" mdbWavesEffect>
+      Open Dialog Center
+    </button>
+    <button (click)="openNoty()" mdbBtn type="button" color="elegant" mdbWavesEffect>
+      Noty
+    </button>
+  </app-dialog-body>
 </app-dialog-right-lg>
-
