@@ -43,22 +43,9 @@ export class Dialog1Component extends Dialog<Dialog1Model> implements OnInit {
 			return [
 				{
 					icon: 'fa-external-link',
-					label: 'dialog 1',
-					action: () => {
-						this.openDialog1();
-					}
-				},
-				{
-					icon: 'fa-external-link',
 					label: 'dialog 2',
 					action: () => {
-						this.close().catch(err => {
-							// if (!err)
-							// 	 this.containerHelper.copyContainer(this.formData)
-							// 	.catch(e => {
-							// 		this.log.error('error:', e);
-							// 	});
-						});
+						this.openDialog2();
 					}
 				},
 				{
@@ -67,10 +54,10 @@ export class Dialog1Component extends Dialog<Dialog1Model> implements OnInit {
 					action: () => {
 						this.close().catch(err => {
 							// if (!err)
-							// 	this.containerHelper.archiveContainer(this.formData)
-							// 	.catch(e => {
-							// 		this.log.error('error:', e);
-							// 	});
+
+								// .catch(e => {
+								// 	this.log.error('error:', e);
+								// });
 						});
 					}
 				}
@@ -111,7 +98,7 @@ export class Dialog1Component extends Dialog<Dialog1Model> implements OnInit {
 	}
 
 	public openDialog2(): boolean {
-		this.dialogService.open('app-as-dialog2', this.formData).then(
+		this.dialogService.open('app-dialog2', this.formData).then(
 			saved => {
 				// this.log.info(`Saved DIALOG2 from DIALOG1`, saved);
 			},
