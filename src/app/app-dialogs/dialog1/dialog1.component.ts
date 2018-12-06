@@ -1,31 +1,72 @@
 import { Component, OnInit } from '@angular/core';
+import { Dialog1Model } from 'src/app/models/dialog1Model';
 import { Dialog } from 'src/app/shared-dialogs/models/dialog';
 import { DialogService } from 'src/app/shared-dialogs/services/dialog.service';
-import { Dialog1Model } from './../../models/dialog1Model';
-import { CustomButtonColors } from './../../shared/enums/custom-button-colors.enum';
-import { CustomButtonSettings } from './../../shared/models/custom-button-settings';
+import { CustomButtonColors } from 'src/app/shared/enums/custom-button-colors.enum';
+import { TooltipTemplates } from 'src/app/shared/enums/tooltip-menu-templates.enums';
+import { CustomButtonSettings } from 'src/app/shared/models/custom-button-settings';
+import { TooltipMenuSettings } from 'src/app/shared/models/tooltip-menu-settings';
 
 @Component({
 	selector: 'app-dialog1',
 	templateUrl: './dialog1.component.html',
-	styleUrls: [ './dialog1.component.scss' ]
+	styleUrls: ['./dialog1.component.scss']
 })
 export class Dialog1Component extends Dialog<Dialog1Model> implements OnInit {
 	private _buttonSettings = [
 		{
-			iconClasses: [ 'fa-save' ],
+			iconClasses: ['fa-save'],
 			text: 'SAVE',
 			color: CustomButtonColors.primary,
 			type: 'submit',
 			action: () => {
 				this.save();
 			}
+		},
+		{
+			iconClasses: ['fa-external-link'],
+			text: 'open dialog 1',
+			color: CustomButtonColors.primary,
+			type: 'submit',
+			action: () => {
+				this.openDialog1();
+			}
 		}
 	];
 	public get buttonSettings(): CustomButtonSettings[] {
 		return this._buttonSettings;
 	}
+	private _headerTooltip = {
+		templateType: TooltipTemplates.Dialog,
+		placement: 'bottom',
+		dynamicOptions: () => {
+			return [
+				{
+					icon: 'fa-external-link',
+					label: 'dialog 2',
+					action: () => {
+						this.openDialog2();
+					}
+				},
+				{
+					icon: 'fa-external-link',
+					label: 'dialog 3',
+					action: () => {
+						this.close().catch(err => {
+							// if (!err)
 
+								// .catch(e => {
+								// 	this.log.error('error:', e);
+								// });
+						});
+					}
+				}
+			];
+		}
+	};
+	public get headerTooltipMenuSettings(): TooltipMenuSettings {
+		return this._headerTooltip;
+	}
 	constructor(
 		dialogService: DialogService
 		// private readonly log: LoggingService,
@@ -34,7 +75,7 @@ export class Dialog1Component extends Dialog<Dialog1Model> implements OnInit {
 		super(dialogService, Dialog1Model);
 	}
 
-	public ngOnInit() {}
+	public ngOnInit() { }
 
 	public show(): void {
 		this.formData.level++;
@@ -57,7 +98,7 @@ export class Dialog1Component extends Dialog<Dialog1Model> implements OnInit {
 	}
 
 	public openDialog2(): boolean {
-		this.dialogService.open('app-as-dialog2', this.formData).then(
+		this.dialogService.open('app-dialog2', this.formData).then(
 			saved => {
 				// this.log.info(`Saved DIALOG2 from DIALOG1`, saved);
 			},

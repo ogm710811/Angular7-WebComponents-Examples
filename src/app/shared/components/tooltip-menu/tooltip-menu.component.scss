@@ -6,12 +6,26 @@
 	width: 77px;
 }
 
+.dialog_tooltip-text--width {
+  width: 50px;
+}
+
 .cursor-pointer {
 	cursor: pointer !important;
 }
 
 .list-item--no-border {
 	outline: none;
+}
+
+.ellipsis-button {
+	width: 35px;
+	height: 35px;
+}
+
+.ellipsis-icon {
+	width: 25px;
+	height: 25px;
 }
 
 .icon--small {
